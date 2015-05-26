@@ -133,7 +133,8 @@ def params():
 
 	entry_points = {
 		"console_scripts": [
-			"octoprint = octoprint:main"
+			"octoprint = octoprint:main",
+			"octoplugin = octoprint_develtools.octoplugin:main"
 		]
 	}
 
