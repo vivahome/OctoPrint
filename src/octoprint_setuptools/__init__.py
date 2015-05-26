@@ -369,6 +369,7 @@ def create_plugin_setup_parameters(identifier="todo", name="TODO", version="0.1"
 		# this plugin is not zip_safe.
 		zip_safe=False,
 
+		setup_requires=["OctoPrint"],
 		install_requires=requires,
 		extras_require=extra_requires,
 
