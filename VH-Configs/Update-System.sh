@@ -4,3 +4,4 @@
  sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
  sudo service octoprint restart
  cd ~
+ 
