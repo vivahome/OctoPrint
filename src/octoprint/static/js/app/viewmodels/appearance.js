@@ -15,9 +15,9 @@ $(function() {
 
         self.title = ko.computed(function() {
             if (self.name())
-                return self.name() + " [" + gettext("Octo") + "]";
+                return self.name() + " [" + gettext("Viva Home") + "]";
             else
-                return gettext("Octo");
+                return gettext("Viva Home");
         });
     }
 
