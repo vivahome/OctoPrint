@@ -8,16 +8,16 @@ $(function() {
 
         self.brand = ko.computed(function() {
             if (self.name())
-                return gettext("Viva Home") + ": " + self.name();
+                return gettext("OctoPrint") + ": " + self.name();
             else
-                return gettext("Viva Home");
+                return gettext("OctoPrint");
         });
 
         self.title = ko.computed(function() {
             if (self.name())
-                return self.name() + " [" + gettext("Viva Home") + "]";
+                return self.name() + " [" + gettext("OctoPrint") + "]";
             else
-                return gettext("Viva Home");
+                return gettext("OctoPrint");
         });
     }
 
