@@ -8,9 +8,9 @@ $(function() {
 
         self.brand = ko.computed(function() {
             if (self.name())
-                return gettext("OctoPrint") + ": " + self.name();
+                return gettext("OctoP") + ": " + self.name();
             else
-                return gettext("OctoPrint");
+                return gettext("OctoP");
         });
 
         self.title = ko.computed(function() {
