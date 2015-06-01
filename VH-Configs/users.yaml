@@ -1,0 +1,7 @@
+netbox3d:
+  active: true
+  apikey: null
+  password: f9a0c745ac86c4142e7b23024f9ef7ed74eca859e1ca39b9b42ebdb503fa7114004a4b83bfc855bcccc22e8f8d3c2c555fa23a1bad7459be41d2a493ae9e8460
+  roles:
+  - user
+  - admin
