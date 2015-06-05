@@ -636,7 +636,14 @@ ul.dropdown-menu li a {
     }
   }
 
+  .canvas_container {
+    position: relative;
+  }
+
   #gcode_layer_slider {
+    position: absolute;
+    right: 0;
+    top: 0;
     height: 568px;
     float: right;
 
@@ -681,6 +688,20 @@ ul.dropdown-menu li a {
     #settings_dialog_menu {
       margin-left: 0;
     }
+  }
+}
+
+
+#settings_appearance_managelanguagesdialog_emptylist {
+  overflow: hidden;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  display: table;
+
+  div {
+    display: table-cell;
+    vertical-align: middle;
   }
 }
 

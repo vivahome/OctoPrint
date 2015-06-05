@@ -82,7 +82,8 @@ default_settings = {
 			"temperature": 5,
 			"sdStatus": 1
 		},
-		"additionalPorts": []
+		"additionalPorts": [],
+		"longRunningCommands": ["G4", "G28", "G29", "G30", "G32"]
 	},
 	"server": {
 		"host": "0.0.0.0",
@@ -153,7 +154,9 @@ default_settings = {
 		"plugins": None,
 		"slicingProfiles": None,
 		"printerProfiles": None,
-		"scripts": None
+		"scripts": None,
+		"translations": None,
+		"generated": None
 	},
 	"temperature": {
 		"profiles": [
@@ -245,6 +248,10 @@ default_settings = {
 		"stylesheet": "css",
 		"cache": {
 			"enabled": True
+		},
+		"webassets": {
+			"minify": True,
+			"bundle": True
 		},
 		"virtualPrinter": {
 			"enabled": False,

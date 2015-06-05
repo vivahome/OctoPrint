@@ -118,7 +118,7 @@ class ShutdownPlugin(OctoPrintPlugin):
 		pass
 
 
-class AssetPlugin(OctoPrintPlugin, ReloadNeedingPlugin):
+class AssetPlugin(OctoPrintPlugin, RestartNeedingPlugin):
 	"""
 	The ``AssetPlugin`` mixin allows plugins to define additional static assets such as Javascript or CSS files to
 	be automatically embedded into the pages delivered by the server to be used within the client sided part of
@@ -163,8 +163,11 @@ class AssetPlugin(OctoPrintPlugin, ReloadNeedingPlugin):
 		           less=['less/my_styles.less']
 		        )
 
-		The assets will be made available by OctoPrint under the URL ``/plugin_assets/<plugin identifier>/<path>``, with
+		The assets will be made available by OctoPrint under the URL ``/plugin/<plugin identifier>/static/<path>``, with
 		``plugin identifier`` being the plugin's identifier and ``path`` being the path as defined in the asset dictionary.
+
+		Assets of the types ``js``, ``css`` and ``less`` will be automatically bundled by OctoPrint using
+		`Flask-Assets <http://flask-assets.readthedocs.org/en/latest/>`_.
 
 		:return dict: a dictionary describing the static assets to publish for the plugin
 		"""
@@ -648,17 +651,30 @@ class BlueprintPlugin(OctoPrintPlugin, RestartNeedingPlugin):
 		``template_folder``, etc.
 
 		Defaults to the blueprint's ``static_folder`` and ``template_folder`` to be set to the plugin's basefolder
-		plus ``/static`` or respectively ``/templates``.
+		plus ``/static`` or respectively ``/templates``, or -- if the plugin also implements :class:`AssetPlugin` and/or
+		:class:`TemplatePlugin` -- the paths provided by ``get_asset_folder`` and ``get_template_folder`` respectively.
 		"""
 		import os
+
+		if isinstance(self, AssetPlugin):
+			static_folder = self.get_asset_folder()
+		else:
+			static_folder = os.path.join(self._basefolder, "static")
+
+		if isinstance(self, TemplatePlugin):
+			template_folder = self.get_template_folder()
+		else:
+			template_folder = os.path.join(self._basefolder, "templates")
+
 		return dict(
-			static_folder=os.path.join(self._basefolder, "static"),
-			template_folder=os.path.join(self._basefolder, "templates")
+			static_folder=static_folder,
+			template_folder=template_folder
 		)
 
 	def is_blueprint_protected(self):
 		"""
-		Whether a valid API key is needed to access the blueprint (the default) or not.
+		Whether a valid API key is needed to access the blueprint (the default) or not. Note that this only restricts
+		access to the blueprint's dynamic methods, static files are always accessible without API key.
 		"""
 
 		return True
