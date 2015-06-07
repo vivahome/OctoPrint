@@ -4,7 +4,6 @@
  echo "$gitpull"
  ok1="Already up-to-date."
  
- 
  # config.log loeschen falls vorhanden
  #if [ -f /tmp/config.log ]
  # then
