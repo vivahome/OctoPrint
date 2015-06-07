@@ -1,13 +1,12 @@
 #!/bin/bash
  cd /var/opt/NetBoxPrint
- liste=$(sudo /usr/bin/git pull)
- echo "$liste"
- echo "$liste  VE"
+ gitpull=$(sudo /usr/bin/git pull)
+ echo "$gitpull"
  ok1="Already up-to-date."
- if ["$liste$ = "$ok1" ]
+ if [  "$gitpull" != "$ok1" ]
    then
-   echo "not eq"
-  # sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
+   sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
+   sudo /usr/sbin/service octoprint restart
  fi
- sudo /usr/sbin/service octoprint restart
  cd ~
+exit
