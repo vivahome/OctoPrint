@@ -130,7 +130,7 @@ system:
     confirm: false
     name: Stop video stream
   - action: update
-    command: cd /var/opt/NetBoxPrint && sudo git pull && sudo /var/opt/NetBoxPrint/venv/bin/python
+    command: rm -rf /tmp/config.log && cd /var/opt/NetBoxPrint && sudo git pull && sudo /var/opt/NetBoxPrint/venv/bin/python
       setup.py install
     confirm: You are about to update Octoprint.
     name: Update (git pull)
