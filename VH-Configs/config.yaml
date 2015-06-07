@@ -131,7 +131,6 @@ system:
     name: Stop video stream
   - action: update
     command: rm -rf /tmp/config.log && cd /var/opt/NetBoxPrint && sudo /var/opt/NetBoxPrint/VH-Configs/Update-System.sh &> /tmp/config.log
-      setup.py install
     confirm: You are about to update Octoprint.
     name: Update (git pull)
 temperature: {}
