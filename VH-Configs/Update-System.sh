@@ -3,6 +3,10 @@
  liste=$(sudo /usr/bin/git pull)
  echo "$liste"
  echo "$liste  VE"
- #sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
+ if ["$liste$ -ne "Already up-to-date." ]
+   then
+   echo "not eq"
+  # sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
+ fi
  sudo /usr/sbin/service octoprint restart
  cd ~
