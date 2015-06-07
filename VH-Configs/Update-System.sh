@@ -3,7 +3,7 @@
  liste=$(sudo /usr/bin/git pull)
  echo "$liste"
  echo "$liste  VE"
- if ["$liste$ -ne "Already up-to-date." ]
+ if ["$liste$ != "Already up-to-date." ]
    then
    echo "not eq"
   # sudo /var/opt/NetBoxPrint/venv/bin/python setup.py install
